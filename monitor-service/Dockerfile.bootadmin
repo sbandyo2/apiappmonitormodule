@@ -1,0 +1,6 @@
+FROM anapsix/alpine-java:latest
+MAINTAINER ibm.com
+COPY bootadmin.jar .
+ENTRYPOINT ["java"]
+CMD ["-jar", "bootadmin.jar"]
+EXPOSE 9142
