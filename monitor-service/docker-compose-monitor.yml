@@ -1,7 +1,7 @@
 version: '2'
 services:
     bootadmin-server:
-        container_name: "bootadmin-server-primary-$RELEASE"
+        container_name: "bootadmin-server"
         build:
             context: .
             dockerfile: Dockerfile.bootadmin
@@ -16,7 +16,7 @@ services:
         logging:
             driver: json-file
     zipkin-server:
-        container_name: "zipkin-server-primary-$RELEASE"
+        container_name: "zipkin-server"
         build:
             context: .
             dockerfile: Dockerfile.zipkin
