@@ -5,7 +5,7 @@ services:
         build:
             context: .
             dockerfile: Dockerfile.bootadmin
-        image: bootadmin-server:latest
+        image: aribaapi/bootadmin-server:latest
         ports:
              - 9142:9142
         networks:
@@ -20,7 +20,7 @@ services:
         build:
             context: .
             dockerfile: Dockerfile.zipkin
-        image: zipkin-server:latest
+        image: aribaapi/zipkin-server:latest
         ports:
              - 9411:9411
         networks:
