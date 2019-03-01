@@ -1,0 +1,39 @@
+version: '2'
+services:
+    bootadmin-server:
+        container_name: "bootadmin-server"
+        build:
+            context: .
+            dockerfile: Dockerfile.bootadmin
+        image: aribaapiprod/bootadmin-server:latest
+        ports:
+             - 9142:9142
+        networks:
+            - spring-monitor-network
+        restart: always
+        volumes:
+            - spring-cloud-config-repo:/var/lib/spring-cloud/config-repo
+        logging:
+            driver: json-file
+    zipkin-server:
+        container_name: "zipkin-server"
+        build:
+            context: .
+            dockerfile: Dockerfile.zipkin
+        image: aribaapiprod/zipkin-server:latest
+        ports:
+             - 9411:9411
+        networks:
+            - spring-monitor-network
+        restart: always
+        volumes:
+            - spring-cloud-config-repo:/var/lib/spring-cloud/config-repo
+        logging:
+            driver: json-file
+volumes:
+    spring-cloud-config-repo:
+        external: true
+
+networks:
+    spring-monitor-network:
+        driver: bridge
